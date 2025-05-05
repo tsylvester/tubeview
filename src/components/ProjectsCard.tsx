@@ -7,19 +7,19 @@ const ProjectsCard = () => {
       name: 'PaynPoint',
       url: 'https://paynpoint.net',
       icon: <ExternalLink size={16} />,
-      description: 'Digital payment solutions'
+      description: 'Monetize bot traffic on your website'
     },
     {
       name: 'Paynless',
       url: 'https://paynless.app',
       icon: <ExternalLink size={16} />,
-      description: 'Simplified payment app'
+      description: 'SaaS boilerplate'
     },
     {
       name: 'PassUp',
       url: 'https://passup.xyz',
       icon: <ExternalLink size={16} />,
-      description: 'Password management tool'
+      description: 'Chrome Password generator & storage'
     },
     {
       name: 'Medium',
@@ -43,15 +43,13 @@ const ProjectsCard = () => {
       name: 'GitHub',
       url: 'https://github.com/tsylvester',
       icon: <Github size={16} />,
-      description: 'Open source contributions'
+      description: 'Selected repos'
     }
   ];
 
   return (
     <div className="bg-white rounded-xl shadow-lg p-6 h-fit sticky top-8">
-      <h2 className="text-xl font-bold text-gray-800 mb-4">
-        More by Tim Sylvester
-      </h2>
+      <h2 className="text-xl font-bold text-gray-800 mb-4"></h2>
       <p className="text-gray-600 mb-6 text-sm">
         Check out my other projects and platforms
       </p>
