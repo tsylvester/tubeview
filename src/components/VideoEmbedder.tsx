@@ -1,17 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import LinkInput from './LinkInput';
 import VideoPlayer from './VideoPlayer';
 import { extractVideoId } from '../utils/youtubeUtils';
 
-const VideoEmbedder = () => {
-  const [videoId, setVideoId] = useState<string | null>(null);
+interface VideoEmbedderProps {
+  initialVideoId?: string | null;
+}
+
+const VideoEmbedder: React.FC<VideoEmbedderProps> = ({ initialVideoId = null }) => {
+  const [videoId, setVideoId] = useState<string | null>(initialVideoId);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (initialVideoId) {
+      setVideoId(initialVideoId);
+    }
+  }, [initialVideoId]);
 
   const handleValidLink = (link: string) => {
     const id = extractVideoId(link);
     if (id) {
       setVideoId(id);
       setError(null);
+      
+      // Update the URL with the new video ID without reloading the page
+      const url = new URL(window.location.href);
+      // Clear any existing path and set to root
+      url.pathname = '/';
+      // Add the video link as query parameter
+      url.searchParams.set('v', link);
+      window.history.pushState({}, '', url.toString());
     } else {
       setError('Invalid YouTube link. Please try again.');
     }
